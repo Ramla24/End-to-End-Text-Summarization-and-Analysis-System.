@@ -55,7 +55,7 @@ def topicModeling(text):
         # Remove the quotes and split into coefficient and word
              coefficient, word = component.split('*')
              word = word.strip().strip('"')  # Remove the surrounding quotes
-             formatted_list.append(f"{word} ")
+             formatted_list.append(f"{coefficient}  :  {word}")
 
     # Step 3: Join the formatted list into a single string
         formatted_topics.append(',  '.join(formatted_list))

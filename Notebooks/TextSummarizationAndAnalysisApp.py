@@ -4,10 +4,11 @@
 # In[1]:
 import pandas as pd
 
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, AutoModelForSequenceClassification, pipeline
 from keyword_extraction import process_paragraph
 from text_summarization import generate_abstractive_summary,generate_extractive_summary
 from topic_modeling import topicModeling
+from sentiment_analysis import sentiment
 import streamlit as st
 from st_tabs import TabBar
 import time
@@ -21,6 +22,8 @@ abstractiveTokenizerFilePath =  "../Models/Abstractive Model/abstractivetokenize
 
 extractiveModelFilePath= "../Models/Extractive Model/extractivemodel"
 extractiveTokenizerFilePath= "../Models/Extractive Model/extractivetokenizer"
+
+sentimentllm = "cardiffnlp/twitter-roberta-base-sentiment"
 
 
 # In[5]:
@@ -63,11 +66,26 @@ def load_extractive_model():
 def load_extractive_tokenizer():
     return AutoTokenizer.from_pretrained(extractiveTokenizerFilePath)
 
+@st.cache_resource
+def load_sentiment_tokenizer():
+    return AutoTokenizer.from_pretrained(sentimentllm)
+
+@st.cache_resource
+def load_sentiment_model():
+    return AutoModelForSequenceClassification.from_pretrained(sentimentllm)
+
+@st.cache_resource
+def load_theme_detector():
+    return pipeline("text-classification", model="Yueh-Huan/news-category-classification-distilbert")
+    
 # Call the caching functions to load the models/tokenizers
 abstractiveModel = load_abstractive_model()
 abstractiveTokenizer = load_abstractive_tokenizer()
 extractiveModel = load_extractive_model()
 extractiveTokenizer = load_extractive_tokenizer()
+sentimentModel = load_sentiment_model()
+sentimentTokenizer = load_sentiment_tokenizer()
+themeDetector = load_theme_detector()
 
 
 
@@ -75,13 +93,15 @@ extractiveTokenizer = load_extractive_tokenizer()
 
 
 # Function for sentiment analysis (placeholder, implement your method)
-def analyze_sentiment(text):
-    # Your sentiment analysis logic here
-    return "Positive"  # Example sentiment
+
 
 def get_theme(text):
     # Your sentiment analysis logic here
-    return "Technology"  # Example sentiment
+    result = themeDetector(text) # Example sentiment
+
+    label = result[0]['label']
+
+    return label.title()
 
 st.markdown("""
     <style>
@@ -117,6 +137,9 @@ if "summary" not in st.session_state:
 
 if "keywords" not in st.session_state:
     st.session_state["keywords"] = []
+
+if "sentiment" not in st.session_state:
+    st.session_state["sentiment"] = []
 
 if "theme" not in st.session_state:
     st.session_state["theme"] = []
@@ -209,6 +232,7 @@ with procbtn:
         if input_text:
            st.session_state["keywords"] = process_paragraph(input_text,topn=6)
            st.session_state["theme"] = get_theme(input_text)
+           
           
         
         
@@ -230,12 +254,12 @@ with procbtn:
         
 
         # Perform sentiment analysis
-               sentiment = analyze_sentiment(summary_text)
+               sentiment = sentiment(summary_text,sentimentTokenizer,sentimentModel)
 
         # Perform topic modeling
                topics = topicModeling(summary_text)
                
-               st.session_state["sentiment"] = sentiment.capitalize()
+               st.session_state["sentiment"] = sentiment
                st.session_state["topics"] = topics
 
               
@@ -302,8 +326,16 @@ with maincol2:
                                            f'<strong>{sentiment}</strong>'
                                            '</div>',
                                            unsafe_allow_html=True)
-                         else:
-                            st.write(sentiment) 
+                         elif sentiment == "Negative":
+                              st.markdown('<div style="background-color: red; padding: 15px; border-radius: 5px; display: inline-block; font-size: 18px;">'
+                                           f'<strong>{sentiment}</strong>'
+                                           '</div>',
+                                           unsafe_allow_html=True)
+                         elif sentiment == "Neutral":
+                              st.markdown('<div style="background-color: orange; padding: 15px; border-radius: 5px; display: inline-block; font-size: 18px;">'
+                                           f'<strong>{sentiment}</strong>'
+                                           '</div>',
+                                           unsafe_allow_html=True)
 
                          st.subheader("Topic Modeling:")
                          for i, topic in enumerate(topics):
