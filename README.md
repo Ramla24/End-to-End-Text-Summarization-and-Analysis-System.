@@ -101,5 +101,74 @@ Streamlit and NLP libraries documentation
 
 
 
+# 🧠 End-to-End Text Summarization and Analysis System
 
+An NLP-powered Streamlit web app for real-time news summarization, sentiment analysis, keyword extraction, and topic modeling.
+
+---
+
+## 📌 Overview
+
+This project is a comprehensive NLP application that uses state-of-the-art large language models (LLMs) to automate the process of analyzing and summarizing news articles. It helps users grasp the core ideas of lengthy texts quickly and efficiently through:
+
+- 📝 **Abstractive & Extractive Summarization**
+- 💬 **Sentiment Analysis**
+- 🔍 **Keyword Extraction**
+- 🧵 **Topic Modeling**
+
+The application is built with a strong focus on usability and performance, making it suitable for journalists, researchers, and information seekers who need real-time insights from large volumes of text.
+
+---
+
+## 🎯 Features
+
+### 🔹 Text Summarization
+- Abstractive Summarization using fine-tuned **BART** & **T5** models.
+- Extractive Summarization using fine-tuned **BERT**.
+- Customizable summary length and type selection.
+
+### 🔹 Sentiment Analysis
+- Real-time sentiment detection using **TinyLLaMA** and **VADER**.
+- Classifies content as **positive**, **negative**, or **neutral**.
+
+### 🔹 Topic Modeling
+- Implemented using **LDA (Latent Dirichlet Allocation)**.
+- Visualized with word clouds for better interpretability.
+
+### 🔹 Keyword Extraction
+- Built using a custom **TF-IDF** algorithm.
+- Enhanced with **POS tagging**, **stopword removal**, and **verb filtering**.
+
+---
+
+## 🧰 Tech Stack
+
+| Layer           | Tools & Technologies                    |
+|-----------------|------------------------------------------|
+| **Frontend**    | Streamlit                                |
+| **Backend**     | Python, Transformers, SpaCy, NLTK        |
+| **Models**      | BART, T5, BERT, TinyLLaMA, VADER         |
+| **Training**    | Google Colab, Jupyter Notebook           |
+| **Versioning**  | GitHub                                   |
+| **Deployment**  | Streamlit Sharing                        |
+
+---
+
+## ⚙️ System Architecture
+User → Streamlit UI → Backend (Python + Models) → Output:
+Summary, Keywords, Sentiment, Topics
+
+
+
+---
+
+## 🚀 How to Run Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Ramla24/Text-Summarization-and-Analysis-System.git
+   cd Text-Summarization-and-Analysis-System
+
+2. **Install dependencies**
+3. 
 
