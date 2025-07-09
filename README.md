@@ -78,17 +78,17 @@ Summary, Keywords, Sentiment, Topics
 ---
 
 ## 🧪 Model Training
-Fine-tuned BART and T5 on the MultiNews dataset using LoRA for efficient training.
-Fine-tuned BERT using a custom dataset of news articles for extractive summarization.
-TinyLLaMA was fine-tuned using the News Sentiment Analysis dataset.
+- Fine-tuned BART and T5 on the MultiNews dataset using LoRA for efficient training.
+- Fine-tuned BERT using a custom dataset of news articles for extractive summarization.
+- TinyLLaMA was fine-tuned using the News Sentiment Analysis dataset.
 
 
 
 ## 📈 Evaluation Metrics
-Summarization: ROUGE-1, ROUGE-2, ROUGE-L
-Sentiment Analysis: Accuracy, Precision, Recall, F1-score
-Topic Modeling: Coherence Score, Perplexity Score
-Keyword Extraction: Manual and TF-IDF validation
+- Summarization: ROUGE-1, ROUGE-2, ROUGE-L
+- Sentiment Analysis: Accuracy, Precision, Recall, F1-score
+- Topic Modeling: Coherence Score, Perplexity Score
+- Keyword Extraction: Manual and TF-IDF validation
 
 
 
