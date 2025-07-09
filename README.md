@@ -94,15 +94,15 @@ Keyword Extraction: Manual and TF-IDF validation
 
 
 ## 🎯 Use Cases
-🗞️ News summarization for journalists and researchers.
-📈 Business intelligence from news content.
+- 🗞️ News summarization for journalists and researchers.
+- 📈 Business intelligence from news content.
 
 ## 🔥 Future Enhancements
-🌍 Multilingual support
-🧠 Integration of advanced models like GPT-4
-☁️ Cloud-based deployment (e.g., AWS, Azure)
-🔁 Real-time streaming input support
-🎯 Advanced customization and fine-grained sentiment analysis
+- 🌍 Multilingual support
+- 🧠 Integration of advanced models like GPT-4
+- ☁️ Cloud-based deployment (e.g., AWS, Azure)
+- 🔁 Real-time streaming input support
+- 🎯 Advanced customization and fine-grained sentiment analysis
 
 ## 📽️ Demo Video
 
