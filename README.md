@@ -116,9 +116,9 @@ Keyword Extraction: Manual and TF-IDF validation
 A comprehensive technical breakdown including architecture, implementation, fine-tuning, evaluations, and future improvements.
 
 ## 📚 References
-MultiNews Dataset
-News Sentiment Dataset
-Hugging Face Transformers
-YouTube tutorials for model fine-tuning
-Streamlit and NLP libraries documentation
+- MultiNews Dataset
+- News Sentiment Dataset
+- Hugging Face Transformers
+- YouTube tutorials for model fine-tuning
+- Streamlit and NLP libraries documentation
 
