@@ -75,8 +75,7 @@ Summary, Keywords, Sentiment, Topics
    cd Frontend
    streamlit run TextSummarizationAndAnalysisApp.py
 
-
-
+---
 
 ## 🧪 Model Training
 Fine-tuned BART and T5 on the MultiNews dataset using LoRA for efficient training.
