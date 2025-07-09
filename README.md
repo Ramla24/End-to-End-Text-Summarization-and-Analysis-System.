@@ -1,4 +1,4 @@
-🧠 End-to-End Text Summarization and Analysis System
+##🧠 End-to-End Text Summarization and Analysis System
 An NLP-powered Streamlit web app for real-time news summarization, sentiment analysis, keyword extraction, and topic modeling.
 
 📌 Overview
